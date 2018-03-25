@@ -1,0 +1,63 @@
+﻿@model 答题竞赛.ViewModels.UserViewModel
+
+@{
+    ViewBag.Title = "Userinfor";
+    Layout = "~/Views/Shared/_ADshareview.cshtml";
+}
+
+
+
+<div>
+    <h4>用户信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassWords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassWords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Add_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Add_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isAdmin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isAdmin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model=>model.integral)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model=>model.integral)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model=>model.Make_a_breakthrough)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model=>model.Make_a_breakthrough)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("编辑", "EditUser", new { uid = Model.User_id }) |
+    @Html.ActionLink("返回用户列表", "ManageOfUser")
+</p>

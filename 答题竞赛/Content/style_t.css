@@ -1,0 +1,22 @@
+/** resets **/
+/**头部**/
+.dl{ background-color: green; border-radius: 9px;height: 5px;}
+.zc{background-color: green;border-radius: 9px;}
+/*.dw{margin-top: -10px;}*/
+/*左侧图片CSS*/
+.home{float:left;margin-left: -250px;}
+/**下拉菜单**/
+.dropdown{border: 1px solid white;border-radius: 9px;}
+/** 头部nav_box**/
+.nav_box {width:100%;height:80px;background:#1a1a1a;margin-top:-50px;;}
+.nav_top {width:1000px;height:70px;margin-left:330px;}
+.nav_top ul {margin:0px;padding:0; font-family:"Microsoft Yahei","微软雅黑",Verdana;list-style: none;}
+.nav_top li {float:left;height:60px;padding:0;margin-top: 10px;margin-left: 10px;}
+.nav_top li a {height:60px;line-height:60px;color:#fff;padding:0 20px;text-align:center;font-size:15px;font-weight:bold;text-decoration: none;}
+.nav_top li a:hover {color:#ffff00;text-decoration: none;}
+.form-group{text-align:center;}
+
+
+
+
+

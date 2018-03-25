@@ -1,0 +1,85 @@
+﻿@model IEnumerable<答题竞赛.ViewModels.QuestionViewModel>
+
+@{
+    ViewBag.Title = "AnswerQuestions";
+}
+
+<h2>Hi,@ViewBag.UserName 答题升级哟！</h2>
+
+<div style="position:fixed;width:13%;height:40px;top:140px;right:-1px;"><h4>倒计时：</h4><h4 id="time_show"></h4></div>
+<table class="table">
+    
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="color:#66ccff;">#@item.temp_id</td>
+        <td>@Html.DisplayFor(modelitem => item.Q_content)</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+        <button  class="btn btn-default @item.Qid" onclick="aler(this)" data-id="@item.Qid">@Html.DisplayFor(modelitem => item.Q_Select_A)</button>
+        <button class="btn btn-default @item.Qid" onclick="aler(this)" data-id="@item.Qid">@Html.DisplayFor(modelitem => item.Q_Select_B)</button>
+        <button class="btn btn-default @item.Qid" onclick="aler(this)" data-id="@item.Qid">@Html.DisplayFor(modelitem => item.Q_Select_C)</button>
+        <button class="btn btn-default @item.Qid" onclick="aler(this)" data-id="@item.Qid">@Html.DisplayFor(modelitem => item.Q_Select_D)</button></td>
+    </tr>
+}
+
+</table>
+@using (Html.BeginForm("receive_result", "Home",FormMethod.Post))
+{
+    <div hidden="hidden"><input value="0" name="score" id="score" />
+    <input value="0" name="Use_time" id="time" /><input value="" id="selectitems" name="selectitems" /></div>
+    <span>@ViewBag.err_submat</span>
+    <div style="width:100%;text-align:center;">
+    <input type="submit" style="width:200px;" value="提交" id="sub" class="btn btn-success">
+
+        
+
+    </div>
+}
+<div id="al_1" hidden="hidden"></div>
+<div id="al_2" hidden="hidden">0</div>
+<div name="start_time"></div>
+<div hidden="hidden" id="hidden_count">0</div>
+
+
+<script src="/Scripts/jquery-1.10.2.js"></script>
+<script>
+    function aler(witch) {
+        var vu = witch.innerHTML;
+        var Q_id = witch.getAttribute("data-id");
+        var timer_start = @ViewBag.set_timmer;
+        var time_left = $("#time_show").html().replace("s", "");
+        $.post("/Home/CheckAnswer", { "s": vu, "QID": Q_id }, function (data) {
+            $("." + Q_id).attr("disabled", true);
+            var sum = parseInt($("#score").val()) + parseInt(data);
+            $("#score").val(sum);
+        });
+        $(witch).addClass("btn-primary");
+        $("#time").val(parseInt(timer_start) - parseInt(time_left));
+        var privous_items_value = $("#selectitems").val();
+        var add_select_string = privous_items_value + "," + Q_id + ":" + $(witch).html().substr(0, 1);
+        $("#selectitems").val(add_select_string);
+
+    }
+
+    $(document).ready(function () {
+        Countdown();
+    });
+    var timer = @ViewBag.set_timmer;
+    function Countdown() {
+        if (timer >= 1) {
+            timer -= 1;
+            $("#time_show").html(timer + "s");
+            if (timer==0) {
+                $("#sub").click();
+            }
+            setTimeout(function () {
+                Countdown();
+            }, 1000);
+        }
+    }
+    
+    
+
+</script>

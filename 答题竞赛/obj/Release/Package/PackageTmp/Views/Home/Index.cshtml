@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div>
+    @Html.ActionLink("答题页面", "AnswerQuestions")<br />
+    @Html.ActionLink("登陆页面", "Login", "Authentication")<br />
+    @Html.ActionLink("账户信息","Index", "Authentication")<br />
+    @Html.ActionLink("立刻注销","Logout", "Authentication")<br />
+    @Html.ActionLink("历史成绩", "Index", "ScoreList")<br />
+</div>

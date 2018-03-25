@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<script type="text/javascript">
+		$(function(){
+			var i=0;
+			var clone=$(".banner .img li").first().clone();
+			$(".banner .img").append(clone);
+
+			var size=$(".banner .img li").size()
+		    for(var j=0;j<size-1;j++){
+				$(".banner .num").append("<li></li>");
+			}
+			$(".banner .num li").first().addClass("on");
+			/*鼠标划入圆点*/
+			$(".banner .num li").hover(function(){
+				var index=$(this).index();
+				i=index;
+				$(".banner .img").stop().animate({left:-index*1364},1000)
+				$(this).addClass("on").siblings().removeClass("on")
+			})
+			/*自动轮播*/
+			var t=setInterval(function(){
+				i++;
+				move();
+			},4000)
+
+			/*对banner定时器的操作*/
+			$(".banner").hover(function(){
+				clearInterval(t);
+			},function(){
+				t=setInterval(function(){
+				 i++;
+				 move();
+			},6000)
+			})
+			/*向左的按钮*/
+			$(".banner .btn_l").click(function(){
+				    i++
+			        move();
+			})
+		   /*向右的按钮*/
+		    $(".banner .btn_r").click(function(){
+				   i--
+				   move();
+			 })
+			function move(){
+
+				if(i==size){
+					$(".banner .img").css({left:0})
+					i=1;
+				}
+				if(i==-1){
+					$(".banner .img").css({left:-(size-1)*1364})
+				    i=size-2;
+				  }
+				$(".banner .img").stop().animate({left:-i*1364},1000)
+				if(i==size-1){
+					$(".banner .num li").eq(0).addClass("on").siblings().removeClass("on")
+				}else{
+					$(".banner .num li").eq(i).addClass("on").siblings().removeClass("on")
+				}
+
+			}
+		})
+</script>
+
+
+<div class="banner">
+    <ul class="img">
+        <li><a href="#"
+<img src="~/Content/images/index_a.jpg" />></a></li><!--左侧图标链接 图片大小1364*580-->
+        <li><a href="#">
+                <img src="~/Content/images/index_b.jpg" /></a></li><!--左侧图标链接 图片大小1364*580-->
+        <li><a href="#"
+<img src="~/Content/images/index_c.jpg" />></a></li><!--左侧图标链接 图片大小1364*580-->
+    </ul>
+    <ul class="num"></ul>
+    <div class="btn btn_l">&lt;</div>
+    <div class="btn btn_r">&gt;</div>
+</div>
+<div class="rule">
+    <!--规则介绍-->
+    <div class="box_l">
+        <h3 align="center">答题游戏介绍</h3>
+        <hr style="width:50%;margin-left: 120px; margin-top: 30px;" align="center">
+    </div>
+    <div class="box_r">
+        <h1>比赛规则</h1>
+    </div>
+</div>
+<div class="tp">
+    <!--三张图片-->
+    <div class="tp1">
+        <img src="image/shop.jpg"><!--左侧图标链接 图片大小440*400-->
+    </div>
+    <div class="tp2">
+        <img src="image/game.jpg"><!--左侧图标链接 图片大小440*400-->
+    </div>
+    <div class="tp3">
+        <img src="image/knowledge.jpg"><!--左侧图标链接 图片大小440*400-->
+    </div>
+</div>
+<div class="fw">
+    <h1 class="h_1">游戏比赛服务与奖励</h1>
+    <h2 class="h_2">丰富·公平·新颖</h2>
+    <div class="middle">
+        <div class="item_1">
+            <p>指导老师贴身辅导</p>
+        </div>
+        <div class="item_2">
+            <p>实战演练，促进就业</p>
+        </div>
+        <div class="item_3">
+            <p>比赛权威，规模大</p>
+        </div>
+    </div>
+</div>
+<!-- 中间部分 ↑-->
+
+
+
+
+
+@*<h2>Index</h2>
+<div>
+    @Html.ActionLink("注册页面","register", "Authentication")<br />
+    @Html.ActionLink("答题页面", "AnswerQuestions")<br />
+    @Html.ActionLink("登陆页面", "Login", "Authentication")<br />
+    @Html.ActionLink("账户信息","Index", "Authentication")<br />
+    @Html.ActionLink("立刻注销","Logout", "Authentication")<br />
+    @Html.ActionLink("历史成绩", "Index", "ScoreList")<br />
+</div>*@

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<答题竞赛.Models.ShopGoods>
+
+@{
+    ViewBag.Title = "ShopManage";
+    Layout = "~/Views/Shared/_ADshareview.cshtml";
+}
+
+<h2>ShopManage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateShopGood")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Good_cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Good_Describe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.can_buy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem =>item.GoodName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Good_cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Good_Describe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.can_buy)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new { id=item.Good_id }) |
+            @Html.ActionLink("详情", "Details", new { id=item.Good_id }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.Good_id })
+        </td>
+    </tr>
+}
+
+</table>

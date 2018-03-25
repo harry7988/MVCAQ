@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
+
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="nav_box">
+        <!-- 头部 ↓-->
+        <div class="nav_top">
+            <a class="home" href="#">
+                <img src="~/Content/images/logo-blank.png" /></a>  <!--左侧图标链接 图片大小210*61-->
+            <ul class="menu">
+                <!--菜单-->
+                <li class="z"><a href="index.html">首页</a></li>
+                <li class="z"><a href="#">本届赛事</a></li>
+                <li class="z"><a href="#">关于游戏</a></li>
+                <li class="z"><a href="#">相关事宜</a></li>
+                <li class="z"><a href="#">练习系统</a></li>
+                <li class="z"><a href="#">C#</a></li>
+                <li class="z"><a href="#">联系我们</a></li>
+                <li id="login1" class="account">                             <!--一个注册网页-->
+                <li class="dl"><a data-toggle="modal" data-target="#login" href=""><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                <li class="zc"><a data-toggle="modal" data-target="#register" href=""><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                <!-- 登录窗口 -->
+                <div id="login" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-title">
+                                <h1 class="text-center">登录</h1>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-group" action="">                               
+                                        <div class="form-group">
+                                            <label for="">用户名</label>
+                                            <input class="form-control" type="text" placeholder="请输入您的用户名">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">密码</label>
+                                            <input class="form-control" type="password" placeholder="请输入您的密码">
+                                        </div>
+                                   
+                                
+                                    <div class="text-center">
+                                        <button class="btn btn-primary" type="submit">登录</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                    </div>
+                                    <a href="" data-toggle="modal" style="color:#0000FF;" data-dismiss="modal" data-target="#register">还没有账号？点我注册</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 注册窗口 -->
+                <div id="register" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-title">
+                                <h1 class="text-center">注册</h1>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-group" action="">
+                                    <div class="form-group">
+                                        <label for="">用户名</label>
+                                        <input class="form-control" type="text" placeholder="6-15位字母或数字">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">密码</label>
+                                        <input class="form-control" type="password" placeholder="至少6位字母或数字">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">再次输入密码</label>
+                                        <input class="form-control" type="password" placeholder="至少6位字母或数字">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">邮箱</label>
+                                        <input class="form-control" type="email" placeholder="例如:123@123.com">
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="btn btn-primary" type="submit">提交</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                    </div>
+                                    <a href="" data-toggle="modal" style="color: #0000FF;" data-dismiss="modal" data-target="#login">已有账号？点我登录</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        用户 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#">用户名</a></li>
+                        <li><a href="#">信息</a></li>
+                        <li><a href="#">注册时间:</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">邮箱:</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 头部 ↑-->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        
+    </div>
+    <link href="~/Content/style_t.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

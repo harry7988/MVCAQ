@@ -1,0 +1,259 @@
+﻿@model IEnumerable<答题竞赛.ViewModels.QuestionViewModel>
+
+@{
+    ViewBag.Title = "AnswerQuestions";
+}
+
+<html>
+<head>
+    <style>
+        #bigdiv {
+            border-style: solid;
+            border-width: 2px;
+            border-color: cornflowerblue;
+            width: 99.2%;
+            height: 950px;
+            margin: 0 auto;
+            box-shadow: 4px 6px 7px blue;
+            border-radius: 12px;
+            background-image: url(/Content/images/AQdabeijing.jpg);
+            background-repeat: no-repeat;
+            margin-top: 4px;
+            background-size: 100% 100%;
+        }
+
+        #top {
+            width: 90%;
+            height: 86px;
+            border-bottom: 6px groove;
+            border-bottom-color: dodgerblue;
+            margin-top: 46px;
+            margin-bottom: 10px;
+            margin: 0 auto;
+            text-align: center;
+            font-weight: bold;
+            color: chocolate;
+        }
+
+        #zhright {
+            border: 1px solid cornflowerblue;
+            border-radius: 60px;
+            width: 57%;
+            height: 700px;
+            background-image: url(/Content/images/AQrightbj.png);
+            background-repeat: no-repeat;
+            float: right;
+            margin-right: 10px;
+            margin-top: 20px;
+            box-shadow: 3px 5px 6px cornflowerblue;
+            background-size: 100% 100%;
+        }
+
+        #zhleft {
+       
+            width: 41%;
+            height: 700px;
+            float: left;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        #louti {
+            padding-top: 55px;
+       
+            display: block;
+            margin-top: 60px;
+            margin-left: 20px;
+        }
+
+        .rentu {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #ren {
+            position: absolute;
+            z-index: 2;
+            height: 60px;
+           
+            top: 87%;
+            left: 82%;
+            margin-left: -50px;
+            margin-top: -10px;
+            display: block;
+        }
+
+        #time {
+      
+            width: 170px;
+            height: 80px;
+            float: right;
+            margin-right: 122px;
+            margin-top: 20px;
+            color: chocolate;
+            text-align: center;
+            font-weight: 900;
+            font-size: 20px;
+        }
+
+        #tab1 {
+            color: chocolate;
+            font-size: 24px;
+            margin-top: 12px;
+            margin-left: 6px;
+        }
+
+        #tab2 {
+            color: chocolate;
+            font-size: 24px;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 12px;
+            margin-left: 6px;
+        }
+
+        #contentbox {
+            width: 510px;
+            height: 3600px;
+            border:2px solid red;
+            display: block;
+            z-index: -1;
+
+        }
+
+        #rightmidd {
+        
+            width: 510px;
+            height: 340px;
+            margin-top: 120px;
+            margin-left: 52px;
+            position: absolute;
+            z-index: 2;
+            display: block;
+            filter: alpha(opacity=80);
+            opacity: 0.8;
+           
+        }
+
+        .LinkTab {
+            float: left;
+            width: 510px;
+            height: 340px;
+            list-style: none;
+        }
+
+        .LinkTab1 {
+            margin-top: 6px;
+            margin-left:3px;
+        }
+
+        .LinkTab2 {
+            margin-top: 6px;
+            margin-left: 3px;
+        }
+
+        button {
+            margin-top: 6px;
+            margin-left: 6px;
+        }
+
+        #bottom {
+        
+            width: 250px;
+            height: 80px;
+            margin-left: 350px;
+            margin-top: 530px;
+        }
+
+        .xuanti {
+            padding: 8px;
+            color: gold;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: 900;
+            font-size: 150%;
+            background-color: cornflowerblue;
+            border: none;
+            border-radius: 50%;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+    <script src="~/Scripts/vue.js"></script>
+    
+</head>
+<body style="background-color:lightblue">
+    <div id="bigdiv">
+        <div id="top">
+            <h2>Hi,@ViewBag.UserName 答题升级哟！</h2>
+        </div>
+        <div id="zhleft">
+            <div id="louti"><img src="~/Content/images/AQlouti.png" /></div>
+            <div id="ren"><img src="~/Content/images/AQren.png" class="rentu" /></div>
+        </div>
+        <div id="zhright">
+            <div id="time">
+                <h3 id="time_show"></h3>
+            </div>
+
+                <div id="rightmidd">
+                    @foreach (var item in Model)
+            {
+                <table class="LinkTab" v-if="isshow===@item.temp_id">
+                    <tr class="LinkTab1">
+                        <td id="tab1">@item.temp_id</td>
+                        <td id="tab2">@Html.DisplayFor(modelitem => item.Q_content)</td>
+                    </tr>
+                    <tr class="LinkTab2">
+                        <td colspan="4">
+                            <button class="btn btn-default @item.Qid" onclick="aler(this)" data-id="@item.Qid" style="background-image:url(/Content/images/3.png);background-repeat:repeat">@Html.DisplayFor(modelitem => item.Q_Select_A)</button><br />
+                            <button class="btn btn-default @item.Qid" onclick="aler(this)" data-id="@item.Qid" style="background-image:url(/Content/images/3.png);background-repeat:repeat">@Html.DisplayFor(modelitem => item.Q_Select_B)</button><br />
+                            <button class="btn btn-default @item.Qid" onclick="aler(this)" data-id="@item.Qid" style="background-image:url(/Content/images/3.png);background-repeat:repeat">@Html.DisplayFor(modelitem => item.Q_Select_C)</button><br />
+                            <button class="btn btn-default @item.Qid" onclick="aler(this)" data-id="@item.Qid" style="background-image:url(/Content/images/3.png);background-repeat:repeat">@Html.DisplayFor(modelitem => item.Q_Select_D)</button><br />
+                        </td>
+                    </tr>
+                </table>
+    }
+                </div>
+
+
+                <div id="bottom">
+                    <button id="move1" class="xuanti" v-on:click="priviousQ">上一题</button>
+                    <button id="move2" class="xuanti" v-on:click="nextQ">下一题</button>
+                
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+
+    var vm = new Vue({
+        el: "#zhright",
+        data: {
+            isshow: 1
+        },
+        methods: {
+            nextQ: function () {
+                if (this.isshow < 10) {
+                    this.isshow = this.isshow + 1; 1
+                    console.log(this.isshow);
+                }
+                return this.isshow;
+            },
+            priviousQ: function () {
+                if (this.isshow > 1) {
+                    this.isshow = this.isshow - 1;
+                    console.log(this.isshow);
+                }
+                return this.isshow;
+            }
+        }
+    })
+
+</script>

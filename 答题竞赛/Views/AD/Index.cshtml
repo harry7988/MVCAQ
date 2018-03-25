@@ -1,0 +1,57 @@
+﻿@using 答题竞赛.ViewModels
+@model 答题竞赛.ViewModels.AdminViewModel
+
+
+@{
+    Layout = "~/Views/Shared/_ADshareview.cshtml";
+    List<ScoreViewModel> sl = new List<ScoreViewModel>();
+    sl = Model.scores;
+}
+
+
+<table class="table table-hover">
+    <thead class="thead-default">
+        <tr>
+            <th>名次</th>
+            <th>用户名</th>
+            <th>分数</th>
+        </tr>
+    </thead>
+    @{ int i = 0;}
+    @foreach (var item in sl)
+    {
+        i++;
+        <tr>
+            <td>@i</td>
+            <td>@item.UserName</td>
+            <td>@item.CorrectNumber</td>
+        </tr>
+    }
+
+</table>
+<hr style="width:96%;">
+<div class="col-12" style="display:inline-block">
+    <div class="card-group">
+        <div class="card">
+            <div class="card-header c_text">
+                用户数
+            </div>
+            <div class="card-body c_text">@Model.UserNumber</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header c_text">
+                题库数
+            </div>
+            <div class="card-body c_text">@Model.QuestionNumber</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header c_text">
+                最高分
+            </div>
+            <div class="card-body c_text">@Model.The_Max_score</div>
+        </div>
+        
+    </div>
+</div>

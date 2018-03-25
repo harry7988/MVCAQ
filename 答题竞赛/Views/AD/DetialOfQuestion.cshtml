@@ -1,0 +1,73 @@
+﻿@model 答题竞赛.ViewModels.QuestionViewModel
+
+@{
+    ViewBag.Title = "DetialOfQuestion";
+    Layout = "~/Views/Shared/_ADshareview.cshtml";
+}
+<h4>问题详情</h4>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.temp_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.temp_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q_content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q_content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q_Select_A)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q_Select_A)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q_Select_B)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q_Select_B)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q_Select_C)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q_Select_C)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q_Select_D)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q_Select_D)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("编辑", "EditQuestion", new { id = Model.Qid }) |
+    @Html.ActionLink("返回列表", "Management_of_questions")
+</p>

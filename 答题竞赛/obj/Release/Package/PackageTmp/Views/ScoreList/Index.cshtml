@@ -1,0 +1,45 @@
+﻿@model IEnumerable<答题竞赛.Models.Score>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.UserName 的历史成绩</h2>
+
+<p>
+    @Html.ActionLink("创建新记录", "AnswerQuestions", "Home")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Use_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorrectNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WrongNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Add_Time)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Use_Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorrectNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WrongNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitem=>item.Add_Time)
+        </td>
+    </tr>
+}
+
+</table>

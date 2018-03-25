@@ -1,0 +1,71 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+
+</head>
+<body>
+    
+    <div class="z-main">
+        <div class="swatch-800 nav1">
+            <div style="text-align:right;padding-right:100px;padding-top:14px;">欢迎，<a href="@Url.Action("index","Authentication")" style="color:white;">@User.Identity.Name</a> &nbsp;&nbsp;&nbsp;@Html.ActionLink("注销", "Logout", "Authentication",new { style = "color:white;" })</div>
+        </div>
+        <div class="left_bar swatch-900">
+            <div class="l_nav">
+                <ul class="nav nav-pills flex-column">
+
+                    <li class="nav-item">
+                        <a class="nav-link @if(ViewBag.which_selected==0)
+                        {
+
+                            @Html.Raw("swatch-600");
+                        }" href="@Url.Action("index")" style="color: white">总&nbsp;&nbsp;&nbsp;览</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if(ViewBag.which_selected==1)
+                        {
+                            @Html.Raw("swatch-600");
+                        }" href="@Url.Action("Management_of_questions")" style="color: white">题库管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if(ViewBag.which_selected==2)
+                        {
+                            @Html.Raw("swatch-600");
+                        }" href="@Url.Action("ManageOfUser")" style="color: white">用户管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if(ViewBag.which_selected==3)
+                        {
+                            @Html.Raw("swatch-600");
+                        }" href="@Url.Action("ShopManage")" style="color: white">商店管理</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="main-right">
+            <div class="neirong">
+                @RenderBody()
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+<link href="~/Content/custom-css-bootstrap-magic-2018-01-03.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<link href="~/Content/adminview.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+</html>
+

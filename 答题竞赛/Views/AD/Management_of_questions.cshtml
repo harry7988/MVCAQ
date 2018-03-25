@@ -1,0 +1,71 @@
+﻿@using 答题竞赛.ViewModels
+@model ManageOfQuestion
+@{
+    ViewBag.Title = "题库管理";
+    Layout = "~/Views/Shared/_ADshareview.cshtml";
+    List<QuestionViewModel> qvm = new List<QuestionViewModel>();
+    qvm = Model.questions;
+
+}
+
+<div class="card-group">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header c_text">
+                新增题目
+            </div>
+            <div class="card-body c_text">
+                <form action="@Url.Action("Upload")" method="post" enctype="multipart/form-data" class="form-inline">
+
+                    上传CSV文件：<input type="file" name="fileUpload" value="" />
+                    <input type="submit" name="submit" class="btn btn-secondary" value="上传" />
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--以上内容为上传题库到数据库2018.1.4沈浩-->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header c_text">
+                搜索题库
+            </div>
+            <div class="card-body c_text">
+                <form  method="post" class="form-inline">
+                    <div class="input-group form-inline" style="width:90%;">
+                        <span class="input-group-addon">搜索：</span>
+                        <input type="text" class="form-control" name="searchstring" style="width:100%;" placeholder="请输入题目关键字" />
+                        
+                    </div>
+                    <input type="submit" class="btn btn-secondary"style="display:inline-block" name="search" value="搜索" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--题库搜索2018.1.4沈浩-->
+</div>
+    <div class="card">
+        <div class="card-header c_text">
+            题目库预览
+        </div>
+        <div class="card-body c_text">
+            <table class="table table-hover table-striped">
+                <thead>
+                <th>编号</th>
+                <th>问题</th>
+                <th></th>
+                </thead>
+
+                @foreach (var item in qvm)
+                {
+                    <tr>
+                        <td>@item.temp_id</td>
+                        <td>@item.Q_content</td>
+                        <td>@Html.ActionLink("详情", "DetialOfQuestion",new { id=item.Qid})</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+

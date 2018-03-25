@@ -1,0 +1,15 @@
+﻿@model 答题竞赛.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm("Login", "Authentication", FormMethod.Post))
+{
+    <div>
+        用户名：@Html.TextBoxFor(Model=>Model.User_Name)<br />
+        密 码：@Html.TextBoxFor(Model=>Model.PassWords)<br />
+        <input type="submit" value="登陆" /><br />
+        <div style="color:red;">@ViewBag.err_login</div>
+    </div>
+}
